@@ -1,0 +1,34 @@
+require: rubocop-rspec
+
+AllCops:
+  Exclude:
+    - "vendor/**/*" # rubocop config/default.yml
+    - "db/schema.rb"
+    - "Gemfile"
+    - "Gemfile.lock"
+    - "node_modules/**/*"
+  DisplayCopNames: true
+
+Layout:
+  Enabled: true
+
+Lint:
+  Enabled: false
+
+Metrics:
+  Enabled: false
+
+Performance:
+  Enabled: false
+
+Rails:
+  Enabled: false
+
+Security:
+  Enabled: false
+
+Style:
+  Enabled: false
+
+Bundler:
+  Enabled: false
