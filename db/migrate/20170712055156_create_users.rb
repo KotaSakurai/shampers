@@ -5,8 +5,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :password
       t.string :password_confirmation
-      t.int :age
-      t.int :gender
+      t.integer :age
+      t.integer :gender
 
       t.timestamps
     end
