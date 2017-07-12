@@ -52,6 +52,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rubocop', require: false
   gem 'rubocop-rspec'
+  gem 'rails-controller-testing'
 
 end
 
