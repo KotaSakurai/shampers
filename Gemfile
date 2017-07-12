@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 gem 'rspec'
 gem 'jquery-rails'#, '4.1.1'
+gem 'bcrypt'
 
 group :production do
   gem 'pg'
