@@ -32,24 +32,24 @@ describe 'Sessions', type: :request do
       it { expect(session[:user_id]).to be_nil }
     end
 
-    context 'with not activated user ' do
-      let(:user) { create(:user, activated: false) }
+    # context 'with not activated user ' do
+    #   let(:user) { create(:user, activated: false) }
 
-      before do
-        post login_path, params: { session: { email: user.email, password: user.password } }
-      end
-      it { expect(response).to redirect_to root_path }
-      it { expect(session[:user_id]).to be_nil }
-    end
+    #   before do
+    #     post login_path, params: { session: { email: user.email, password: user.password } }
+    #   end
+    #   it { expect(response).to redirect_to root_path }
+    #   it { expect(session[:user_id]).to be_nil }
+    # end
 
-    context 'not activate user' do
-      before do
-        delete logout_path
-        user.update_attributes(activated: false)
-        post login_path, params: { session: { email: user.email, password: user.password } }
-      end
-      it { expect(response).to redirect_to root_url }
-    end
+    # context 'not activate user' do
+    #   before do
+    #     delete logout_path
+    #     user.update_attributes(activated: false)
+    #     post login_path, params: { session: { email: user.email, password: user.password } }
+    #   end
+    #   it { expect(response).to redirect_to root_url }
+    # end
   end
 
   describe '#destroy' do
