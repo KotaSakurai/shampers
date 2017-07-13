@@ -3,76 +3,95 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject { user }
 
-  let(:user) { build(:user) }
-
   describe 'create user' do
+    let(:user) { build(:user, params) }
+
     context 'valid' do
+      let(:params) { { name: 'foo' } }
+
       it { is_expected.to be_valid }
     end
 
     context 'name is invalid too long length' do
-      before do
-        user.name = "a" * 51
-      end
+      let(:params) { { name: "a" * 51 } }
+
       it { is_expected.to be_invalid }
     end
 
     context 'email is invalid too long length' do
-      before { user.email = "a" * 255 + "example.com" }
+      let(:params) { { email: "a" * 255 + "example.com" } }
+
       it { is_expected.to be_invalid }
     end
 
     context 'when email is not valid format ",com"' do
-      before { user.email = 'user@example,com' }
+      let(:params) { { email: 'user@example,com' } }
+
       it { is_expected.to be_invalid }
     end
 
     context 'when email is not valid format "_and_"' do
-      before { user.email = 'user_at_foo.org' }
+      let(:params) { { email: 'user@example,com' } }
+
       it { is_expected.to be_invalid }
     end
 
     context 'when email is not valid format "foo@bar_baz.com"' do
-      before { user.email = 'foo@bar_baz.com' }
+      let(:params) { { email: 'foo@bar_baz.com' } }
+
       it { is_expected.to be_invalid }
     end
 
     context 'when email is not valid format "foo@bar+baz.com"' do
-      before { user.email = 'foo@bar+baz.com' }
+      let(:params) { { email: 'foo@bar+baz.com' } }
+
       it { is_expected.to be_invalid }
     end
 
     context 'email duplicate' do
-      let(:duplicate_user) { user.dup }
+      let(:duplicate_user) { build(:user, email: "aaa@aaa.com") }
+      let(:params) { { email: "aaa@aaa.com" } }
 
-      before do
-        # duplicate_user.email = user.email
-        duplicate_user.save
-      end
+      before { duplicate_user.save }
+
       it { is_expected.to be_invalid }
     end
 
     context 'email saved lower-case' do
-      let(:lower) { "Foo@ExAMPle.CoM" }
+      let(:params) { { email: 'Foo@ExAMPle.CoM' } }
 
-      before do
-        user.email = lower
-        user.save
-      end
-      it { expect(user.email).to eq lower.downcase }
+      before { user.save }
+      it { expect(user.email).to eq "Foo@ExAMPle.CoM".downcase }
     end
 
-    context 'when password blank' do
-      before do
-        user.password = user.password_confirmation = " " * 6
-      end
+    # context 'when password blank' do
+    #   before do
+    #     user.password = user.password_confirmation = " " * 6
+    #   end
+    #   it { is_expected.to be_invalid }
+    # end
+
+    context 'when confirmation blank' do
+      let(:params) { { password_confirmation: "" } }
+
       it { is_expected.to be_invalid }
     end
 
+    # context 'when password blank' do
+    #   let(:params) { { password: "", password_confirmation: "" } }
+
+    #   before do
+    #     user.password  = ""
+    #     user.password_confirmation = ""
+    #     p user.password
+    #     p user.password_confirmation
+    #   end
+    #   it { is_expected.to be_invalid }
+    # end
+
     context 'when password minimum length' do
-      before do
-        user.password = user.password_confirmation = "a" * 5
-      end
+      let(:params) { { password: "a" * 4, password_confirmation: "a" * 4 } }
+
       it { is_expected.to be_invalid }
     end
   end

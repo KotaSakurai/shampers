@@ -57,6 +57,7 @@ group :development, :test do
   gem 'minitest'
   gem 'minitest-reporters'
 
+  gem 'pry-rails'
 end
 
 group :development do

@@ -72,7 +72,7 @@ describe 'Sessions', type: :request do
   end
 
   describe '#destroy' do
-    let!(:user) { create(:user) }
+    let(:user) { create(:user) }
 
     before do
       post login_path, params: { session: { email: user.email, password: user.password } }
@@ -83,22 +83,30 @@ describe 'Sessions', type: :request do
   end
 
   describe 'edit must need login' do
-    let!(:user) { create(:user) }
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
 
-    context 'when login 'do
-      before do 
+    context 'when login ' do
+      before do
         get login_path
         post login_path, params: { session: { email: user.email, password: user.password } }
         get edit_user_path(user)
       end
-      it { expect(response).to render_template 'edit'}
+      it { expect(response).to render_template 'edit' }
     end
 
     context 'when not login' do
-      before do 
+      before do
         get edit_user_path(user)
       end
-      it { expect(response).to redirect_to login_path } 
+      it { expect(response).to redirect_to login_path }
+    end
+
+    context 'when not login other user edit' do
+      before do
+        get edit_user_path(other_user)
+      end
+      it { expect(response).to redirect_to login_path }
     end
   end
 end
