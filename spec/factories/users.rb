@@ -7,4 +7,13 @@ FactoryGirl.define do
     age 23
     gender 1
   end
+
+  factory :other_user , class: User do
+    name "takeda"
+    email "take@take.com"
+    password "fooboo"
+    password_confirmation "fooboo"
+    age 23
+    gender 1
+  end
 end

@@ -84,7 +84,7 @@ describe 'Sessions', type: :request do
 
   describe 'edit must need login' do
     let(:user) { create(:user) }
-    let(:other_user) { create(:user) }
+    let(:other_user) { create(:other_user) }
 
     context 'when login ' do
       before do
@@ -102,11 +102,13 @@ describe 'Sessions', type: :request do
       it { expect(response).to redirect_to login_path }
     end
 
-    context 'when not login other user edit' do
+    context 'when not login and other user access edit page' do
       before do
+        get login_path
+        post login_path, params: { session: { email: user.email, password: user.password } }
         get edit_user_path(other_user)
       end
-      it { expect(response).to redirect_to login_path }
+      it { expect(response).to redirect_to root_path }
     end
   end
 end
