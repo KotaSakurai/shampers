@@ -116,7 +116,7 @@ describe 'Sessions', type: :request do
         get edit_user_path(user)
         post login_path, params: { session: { email: user.email, password: user.password } }
       end
-      it {expect(response).to redirect_to edit_user_path(user) }
+      it { expect(response).to redirect_to edit_user_path(user) }
     end
   end
 end

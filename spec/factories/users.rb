@@ -8,7 +8,7 @@ FactoryGirl.define do
     gender 1
   end
 
-  factory :other_user , class: User do
+  factory :other_user, class: User do
     name "takeda"
     email "take@take.com"
     password "fooboo"
