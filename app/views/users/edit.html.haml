@@ -1,5 +1,4 @@
-/ - provide (:title, 'Sign up')
-%h1 Sign up
+%h1 Update your profile 
 
 = form_for(@user) do |f|
   = render 'shared/error_messages', object: f.object
@@ -13,7 +12,7 @@
   = f.label :password
   = f.password_field :password
 
-  = f.label :password_confirmation, "Confirmation"
+  = f.label :password_confirmation
   = f.password_field :password_confirmation
 
   = f.label :age
@@ -22,4 +21,4 @@
   = f.label :gender
   = f.number_field :gender
 
-  = f.submit "Create my account"
+  = f.submit "save changes"

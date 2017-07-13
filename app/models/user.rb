@@ -6,6 +6,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates_with EmailValidator
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :age, presence: true
+  validates :gender, presence: true
   before_save :downcase_email
   has_secure_password
 

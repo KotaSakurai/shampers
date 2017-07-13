@@ -35,16 +35,16 @@ describe 'Sessions', type: :request do
     context 'when no remember_me ' do
       before do
         get login_path
-        post login_path, params: { session: { email: user.email, password: user.password ,remember_me: 0 } }
+        post login_path, params: { session: { email: user.email, password: user.password, remember_me: 0 } }
       end
       it { expect(response).to redirect_to user_path(user) }
       it { expect(cookies['remember_token']).to eq nil }
     end
-    
+
     context 'when remember_me ' do
       before do
         get login_path
-        post login_path, params: { session: { email: user.email, password: user.password ,remember_me: 1 } }
+        post login_path, params: { session: { email: user.email, password: user.password, remember_me: 1 } }
       end
       it { expect(response).to redirect_to user_path(user) }
       # test内はcookies[:remember_token]は常にnil
@@ -80,5 +80,25 @@ describe 'Sessions', type: :request do
     end
     it { expect(response).to redirect_to(root_url) }
     it { expect(session[:user_id]).to be_nil }
+  end
+
+  describe 'edit must need login' do
+    let!(:user) { create(:user) }
+
+    context 'when login 'do
+      before do 
+        get login_path
+        post login_path, params: { session: { email: user.email, password: user.password } }
+        get edit_user_path(user)
+      end
+      it { expect(response).to render_template 'edit'}
+    end
+
+    context 'when not login' do
+      before do 
+        get edit_user_path(user)
+      end
+      it { expect(response).to redirect_to login_path } 
+    end
   end
 end
