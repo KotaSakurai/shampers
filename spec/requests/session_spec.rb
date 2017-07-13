@@ -110,5 +110,13 @@ describe 'Sessions', type: :request do
       end
       it { expect(response).to redirect_to root_path }
     end
+
+    context 'when not login access edit page forwarding' do
+      before do
+        get edit_user_path(user)
+        post login_path, params: { session: { email: user.email, password: user.password } }
+      end
+      it {expect(response).to redirect_to edit_user_path(user) }
+    end
   end
 end
