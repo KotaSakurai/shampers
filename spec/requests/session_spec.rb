@@ -32,6 +32,25 @@ describe 'Sessions', type: :request do
       it { expect(session[:user_id]).to be_nil }
     end
 
+    context 'when no remember_me ' do
+      before do
+        get login_path
+        post login_path, params: { session: { email: user.email, password: user.password ,remember_me: 0 } }
+      end
+      it { expect(response).to redirect_to user_path(user) }
+      it { expect(cookies['remember_token']).to eq nil }
+    end
+    
+    context 'when remember_me ' do
+      before do
+        get login_path
+        post login_path, params: { session: { email: user.email, password: user.password ,remember_me: 1 } }
+      end
+      it { expect(response).to redirect_to user_path(user) }
+      # test内はcookies[:remember_token]は常にnil
+      it { expect(cookies['remember_token']).not_to eq nil }
+    end
+
     # context 'with not activated user ' do
     #   let(:user) { create(:user, activated: false) }
 
