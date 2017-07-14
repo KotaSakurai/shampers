@@ -1,0 +1,6 @@
+Hi! #{ @user.name }
+
+Welcome to the Shampers!
+Click on the below to activate your account:
+
+= edit_account_activation_url(@user.activation_token, email: @user.email)

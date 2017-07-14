@@ -1,0 +1,10 @@
+%h1 Shampers
+
+%h3 welcome to best shampoo life
+
+%p Hi! #{ @user.name }
+
+
+%p Welcome to the Shampers Click on the link below to activate your account:
+
+= link_to "activate", edit_account_activation_url(@user.activation_token, email: @user.email)

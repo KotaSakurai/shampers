@@ -96,13 +96,15 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # describe 'user auth' do
-  #   context 'authenticate method check' do
-  #     # it { expect(user.authenticate("foobaa").to eq false )}
-  #   end
+  describe 'user authenticate check' do
+    let(:user) { build(:user) }
 
-  #   context 'user auth' do
-  #     # it { expect(user.authenticated?(:remember, '')).to eq false }
-  #   end
-  # end
+    context 'when remember_token nil' do
+      it { expect(user.authenticated?(:remember, '')).to eq false }
+    end
+    context 'when valid remember_token' do
+      before { user.remember }
+      it { expect(user.authenticated?(:remember, user.remember_token)).to eq true }
+    end
+  end
 end
