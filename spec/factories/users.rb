@@ -6,6 +6,16 @@ FactoryGirl.define do
     password_confirmation "foobar"
     age 23
     gender 1
+    activated true
+  end
+
+  factory :active_user do
+    name "Kurosawa"
+    email "test@test.com"
+    password "foobar"
+    password_confirmation "foobar"
+    age 23
+    gender 1
   end
 
   factory :other_user, class: User do
