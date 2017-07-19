@@ -1,5 +1,4 @@
 class TagsController < ApplicationController
-
   def new
   end
 
@@ -16,6 +15,6 @@ class TagsController < ApplicationController
   private
 
   def tag_params
-    params.require(:tag).permit(:name, :shampoo_id, :user_id )
+    params.require(:tag).permit(:name, :shampoo_id, :user_id)
   end
 end
