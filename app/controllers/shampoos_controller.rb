@@ -38,6 +38,11 @@ class ShampoosController < ApplicationController
     end
   end
 
+  def destroy
+    Shampoo.find(params[:id]).destroy
+    redirect_to root_path
+  end
+
   private
 
   def shampoo_params
