@@ -3,7 +3,7 @@ box: ruby:2.4.1
 build:
   steps:
     - install-packages:
-        packages: nodejs
+      packages: nodejs
 
     - script:
       name: Gem Nokogiri install
@@ -19,19 +19,19 @@ build:
           echo -p "gem list: $(gem list)"
 
     - script:
-        name: Set up db
-        code: RAILS_ENV=test bundle exec rails db:schema:load
+      name: Set up db
+      code: RAILS_ENV=test bundle exec rails db:schema:load
     
     - script:
-        name: rubocop
-        code: bundle exec rubocop
+      name: rubocop
+      code: bundle exec rubocop
 
     - script:
-        name: test
-        code: bundle exec rspec
+      name: test
+      code: bundle exec rspec
 
     
   after-steps:
     - wantedly/pretty-slack-notify:
-        webhook_url: $SLACK_WEBHOOK_URL
-        channel: newbie
+      webhook_url: $SLACK_WEBHOOK_URL
+      channel: newbie
