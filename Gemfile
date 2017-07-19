@@ -40,6 +40,8 @@ gem 'jquery-rails'#, '4.1.1'
 gem 'bcrypt'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'mini_magick'
+gem 'fog'
 
 group :production do
   gem 'pg'
