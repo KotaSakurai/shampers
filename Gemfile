@@ -38,6 +38,8 @@ gem 'haml-rails'
 gem 'rspec'
 gem 'jquery-rails'#, '4.1.1'
 gem 'bcrypt'
+gem 'carrierwave'
+gem 'rmagick'
 
 group :production do
   gem 'pg'
