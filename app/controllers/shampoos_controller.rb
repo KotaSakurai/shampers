@@ -1,6 +1,6 @@
 class ShampoosController < ApplicationController
   def index
-    @shampoo = Shampoo.new
+    @shampoos = Shampoo.all
   end
 
   def show
@@ -11,6 +11,7 @@ class ShampoosController < ApplicationController
   end
 
   def new
+    @shampoo = Shampoo.new
   end
 
   def create

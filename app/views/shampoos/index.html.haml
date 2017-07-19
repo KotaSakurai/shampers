@@ -1,19 +1,11 @@
 %h1 Shampoos#index
 %p Find me in app/views/shampoos/index.html.haml
 
-= form_for(@shampoo) do |f|
-  =# render 'shared/error_messages', object: f.object
+%p
+  = link_to "New Shampoo", new_shampoo_path
 
-  = f.label :name
-  = f.text_field :name
-
-  = f.label :price
-  = f.number_field :price
-
-  = f.label :storage
-  = f.number_field :storage
-
-  = f.label :image
-  = f.file_field :image
-
-  = f.submit "Post Shampoooooo!"
+- @shampoos.each do |shampoo|
+  = image_tag shampoo.image.url, width: "500" if shampoo.image?
+  = link_to "#{shampoo.name}", shampoo_path(shampoo)
+  = shampoo.storage
+  = shampoo.price 
