@@ -1,6 +1,6 @@
 class ShampoosController < ApplicationController
   def index
-    @shampoos = Shampoo.all
+    @shampoos = Shampoo.page(params[:page])
   end
 
   def show
