@@ -5,6 +5,7 @@ class ShampoosController < ApplicationController
 
   def show
     @shampoo = Shampoo.find(params[:id])
+    @user = current_user
   end
 
   def edit
