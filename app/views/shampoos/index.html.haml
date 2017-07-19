@@ -1,2 +1,19 @@
 %h1 Shampoos#index
 %p Find me in app/views/shampoos/index.html.haml
+
+= form_for(@shampoo) do |f|
+  =# render 'shared/error_messages', object: f.object
+
+  = f.label :name
+  = f.text_field :name
+
+  = f.label :price
+  = f.number_field :price
+
+  = f.label :storage
+  = f.number_field :storage
+
+  = f.label :image
+  = f.file_field :image
+
+  = f.submit "Post Shampoooooo!"
