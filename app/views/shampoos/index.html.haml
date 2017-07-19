@@ -4,37 +4,41 @@
 %p
   = link_to "New Shampoo", new_shampoo_path
 
-- @shampoos.each do |shampoo|
-  .shampoos
-    %p
-      = image_tag shampoo.image.url, width: "500" if shampoo.image?
-    %p
-      Shampoo Name : 
-      = link_to "#{shampoo.name}", shampoo_path(shampoo)
-    %p
-      Shampoo Storage : 
-      = shampoo.storage
-    %p
-      Shampoo Price : 
-      = shampoo.price
+-if logged_in?
+  - @shampoos.each do |shampoo|
+    .shampoos
+      %p
+        = image_tag shampoo.image.url, width: "500" if shampoo.image?
+      %p
+        Shampoo Name : 
+        = link_to "#{shampoo.name}", shampoo_path(shampoo)
+      %p
+        Shampoo Storage : 
+        = shampoo.storage
+      %p
+        Shampoo Price : 
+        = shampoo.price
 
-    .tag
-      - @tags.each do |tag|
-        - if tag.shampoo_id == shampoo.id
-          = tag.name 
-          = tag.user_id
+      .tag
+        - @tags.each do |tag|
+          - if tag.shampoo_id == shampoo.id
+            = tag.name 
+            %span.user-id
+              userID: 
+              = tag.user_id
 
-    = form_for (@tag) do |f|
-      = render 'shared/error_messages', object: f.object
+      = form_for (@tag) do |f|
+        = render 'shared/error_messages', object: f.object
 
-      = f.label :name
-      = f.text_field :name
+        = f.label :name
+        = f.text_field :name
 
-      = hidden_field_tag :user_id, current_user.id
+        = f.hidden_field :shampoo_id, :value => shampoo.id
 
-      = hidden_field_tag :shampoo_id, shampoo.id
-
-      = f.submit "Post taaaaag!"
+        = f.hidden_field :user_id, :value => current_user.id
 
 
-= paginate @shampoos
+        = f.submit "Post taaaaag!"
+
+
+  = paginate @shampoos

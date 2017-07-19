@@ -7,7 +7,7 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
     if @tag.save
       flash[:info] = "Posted Shampoo!"
-      redirect_to @shampoo
+      redirect_to root_path
     else
       redirect_to root_url
     end
