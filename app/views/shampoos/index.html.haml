@@ -18,4 +18,23 @@
       Shampoo Price : 
       = shampoo.price
 
+    .tag
+      - @tags.each do |tag|
+        - if tag.shampoo_id == shampoo.id
+          = tag.name 
+          = tag.user_id
+
+    = form_for (@tag) do |f|
+      = render 'shared/error_messages', object: f.object
+
+      = f.label :name
+      = f.text_field :name
+
+      = hidden_field_tag :user_id, current_user.id
+
+      = hidden_field_tag :shampoo_id, shampoo.id
+
+      = f.submit "Post taaaaag!"
+
+
 = paginate @shampoos
