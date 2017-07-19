@@ -9,6 +9,7 @@ class ShampoosController < ApplicationController
   end
 
   def edit
+    @shampoo = Shampoo.find(params[:id])
   end
 
   def new
@@ -22,6 +23,16 @@ class ShampoosController < ApplicationController
       redirect_to @shampoo
     else
       render 'new'
+    end
+  end
+
+  def update
+    @shampoo = Shampoo.find(params[:id])
+    if @shampoo.update_attributes(shampoo_params)
+      flash[:sucess] = "Profile updated"
+      redirect_to @shampoo
+    else
+      render 'edit'
     end
   end
 
