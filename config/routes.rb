@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :shampoos
-  resources :tags
+  resources :tags,                only: [:new, :create, :destroy]
   root 'shampoos#index'
 end
