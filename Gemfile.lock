@@ -263,6 +263,8 @@ GEM
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
     kawaii_email_address (0.2.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -452,6 +454,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   kawaii_email_address
+  launchy
   listen (>= 3.0.5, < 3.2)
   mini_magick
   minitest

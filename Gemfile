@@ -66,6 +66,7 @@ group :development, :test do
   gem 'faker'
 
   gem 'pry-rails'
+  gem 'launchy'
 end
 
 group :test do
