@@ -2,7 +2,6 @@ class ShampoosController < ApplicationController
   def index
     @shampoos = Shampoo.page(params[:page])
     @tag = Tag.new
-    @tags = Tag.all
   end
 
   def show
