@@ -16,6 +16,6 @@ class EmailValidator < ActiveModel::Validator
   end
 
   def kawaii_email_address(email)
-    KawaiiEmailAddress::Validator.new(email).valid? 
+    KawaiiEmailAddress::Validator.new(email).valid?
   end
 end
