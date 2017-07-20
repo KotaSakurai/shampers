@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.new(tag_params)
+    @tag = current_user.tags.build(tag_params)
     if @tag.save
       flash[:info] = "Posted Shampoo!"
       redirect_to root_path
@@ -15,6 +15,6 @@ class TagsController < ApplicationController
   private
 
   def tag_params
-    params.require(:tag).permit(:name, :shampoo_id, :user_id)
+    params.require(:tag).permit(:name, :shampoo_id)
   end
 end
