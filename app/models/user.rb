@@ -45,7 +45,7 @@ class User < ApplicationRecord
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
   end
-  
+
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
