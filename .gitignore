@@ -6,7 +6,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -74,5 +75,8 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore uploader
+/public/uploads
 
 

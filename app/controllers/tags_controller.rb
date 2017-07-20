@@ -8,6 +8,7 @@ class TagsController < ApplicationController
       flash[:info] = "Posted Shampoo!"
       redirect_to root_path
     else
+      flash[:denger] = "You couldn't post"
       redirect_to root_url
     end
   end

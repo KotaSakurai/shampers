@@ -15,17 +15,19 @@
       %p
         Shampoo Storage : 
         = shampoo.storage
+        ml
       %p
         Shampoo Price : 
         = shampoo.price
+        yen
 
       .tag
         - shampoo.tags.each do |tag|
           %span 
             &= "#" + "#{ tag.name }" 
           %span.user-id
-            userID: 
-            = tag.user_id
+            userName: 
+            = tag.user.name
 
       = form_for (@tag) do |f|
         = render 'shared/error_messages', object: f.object
