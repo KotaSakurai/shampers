@@ -20,13 +20,12 @@
         = shampoo.price
 
       .tag
-        - @tags.each do |tag|
-          - if tag.shampoo_id == shampoo.id
-            %span #
-            = tag.name 
-            %span.user-id
-              userID: 
-              = tag.user_id
+        - shampoo.tags.each do |tag|
+          %span 
+            &= "#" + "#{ tag.name }" 
+          %span.user-id
+            userID: 
+            = tag.user_id
 
       = form_for (@tag) do |f|
         = render 'shared/error_messages', object: f.object
@@ -35,9 +34,6 @@
         = f.text_field :name
 
         = f.hidden_field :shampoo_id, value: shampoo.id
-
-        =# f.hidden_field :user_id, value: current_user.id
-
 
         = f.submit "Post taaaaag!"
 
