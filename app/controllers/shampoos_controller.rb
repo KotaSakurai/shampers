@@ -5,12 +5,15 @@ class ShampoosController < ApplicationController
   end
 
   def show
-    @shampoo = Shampoo.find(params[:id])
+    if @shampoo = Shampoo.find_by(id: params[:id])
+    else
+      redirect_to root_path
+    end
     @user = current_user
   end
 
   def edit
-    @shampoo = Shampoo.find(params[:id])
+    @shampoo = Shampoo.find_by(id: params[:id])
   end
 
   def new
@@ -38,7 +41,9 @@ class ShampoosController < ApplicationController
   end
 
   def destroy
-    shampoo.destroy if shampoo = Shampoo.find_by(params[:id])
+    if shampoo = Shampoo.find_by(id: params[:id])
+      shampoo.destroy 
+    end
     redirect_to root_path
   end
 
