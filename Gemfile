@@ -43,6 +43,7 @@ gem 'rmagick'
 gem 'mini_magick'
 gem 'fog'
 gem 'kaminari'
+gem 'kawaii_email_address'
 
 group :production do
   gem 'pg'
