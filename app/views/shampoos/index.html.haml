@@ -1,10 +1,11 @@
 %h1 Shampoos#index
 %p Find me in app/views/shampoos/index.html.haml
 
-%p
-  = link_to "New Shampoo", new_shampoo_path
+
 
 -if logged_in?
+  %p
+    = link_to "New Shampoo", new_shampoo_path
   - @shampoos.each do |shampoo|
     .shampoos
       %p
