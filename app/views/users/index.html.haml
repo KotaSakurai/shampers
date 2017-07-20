@@ -1,8 +1,7 @@
 %h1 Users#index
 %p Find me in app/views/users/index.html.haml
 
-- if logged_in?
+- unless logged_in?
   = link_to "Sign up", signup_path
-- else 
   
   =# render 'static_pages/user_logged_in'

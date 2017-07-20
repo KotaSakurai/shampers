@@ -39,7 +39,7 @@ class ShampoosController < ApplicationController
   end
 
   def destroy
-    Shampoo.find(params[:id]).destroy
+    shampoo.destroy if shampoo = Shampoo.find_by(params[:id])
     redirect_to root_path
   end
 
