@@ -1,14 +1,13 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
 
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true, length: { maximum: 255 },
+  validates :name, presence: true, length: { maximum: 50 }, allow_nil: true
+  validates :email, presence: true, length: { maximum: 255 }, allow_nil: true,
                     uniqueness: { case_sensitive: false }
   validates_with EmailValidator
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  validates :password_confirmation, presence: true, length: { minimum: 6 }, allow_nil: true
-  validates :age, presence: true
-  validates :gender, presence: true
+  validates :age, presence: true, allow_nil: true
+  validates :gender, presence: true, allow_nil: true
   before_save :downcase_email
   before_create :create_activation_digest
   has_secure_password
