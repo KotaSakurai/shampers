@@ -42,7 +42,6 @@ RSpec.describe Shampoo, type: :model do
       it { is_expected.to be_invalid }
     end
 
-
     context 'when name duplicate' do
       let(:duplicate_shampoo) { build(:shampoo, name: "aaaaaa") }
       let(:params) { { name: "aaaaaa" } }
