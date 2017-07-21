@@ -24,5 +24,15 @@ RSpec.describe Tag, type: :model do
 
       it { is_expected.to be_invalid }
     end
+
+    context 'when name duplicate' do
+      let(:duplicate_tag) { build(:tag, name: "so good") }
+      let(:params) { { name: "so good"} }
+
+      before { duplicate_tag.save }
+
+      it { is_expected.to be_invalid }
+    end
+
   end 
 end
