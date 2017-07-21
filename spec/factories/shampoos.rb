@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :shampoo do
-    name "MyString"
-    price 1
-    storage 1
+    name "revuel"
+    price 100
+    storage 1000
     image "MyString"
   end
 end

@@ -6,12 +6,11 @@ RSpec.describe Tag, type: :model do
   describe 'create tags' do
     let(:tag) { build(:tag, params) }
 
-
     context 'when not presence tag' do
       let(:params) { { name: '' } }
 
       it { is_expected.to be_invalid }
-    end 
+    end
 
     context 'when not valid user_id' do
       let(:params) { { user_id: 2000 } }
@@ -27,12 +26,11 @@ RSpec.describe Tag, type: :model do
 
     context 'when name duplicate' do
       let(:duplicate_tag) { build(:tag, name: "so good") }
-      let(:params) { { name: "so good"} }
+      let(:params) { { name: "so good" } }
 
       before { duplicate_tag.save }
 
       it { is_expected.to be_invalid }
     end
-
-  end 
+  end
 end
