@@ -7,9 +7,9 @@ class Tag < ApplicationRecord
 
   def self.search(search)
     if search
-      Tag.where(['name LIKE ?', "%#{sanitize_sql_like(search)}%"])
+      Tag.where(['name LIKE ?', "#{sanitize_sql_like(search)}"])
     else
-      Tag.all
+      false
     end
   end
 end
