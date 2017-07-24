@@ -15,9 +15,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = ActivationMailer.new(User.new(user_params))
     if @user.save
-      @user.send_activation_email
       flash[:info] = "Please check your email to active your account"
       redirect_to root_url
     else
@@ -42,7 +41,6 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = 'User deleted'
-    # 一覧がないため、削除したらどこへ飛ばすべきか？
     redirect_to user_path current_user
   end
 

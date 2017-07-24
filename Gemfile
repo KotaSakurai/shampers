@@ -38,6 +38,12 @@ gem 'haml-rails'
 gem 'rspec'
 gem 'jquery-rails'#, '4.1.1'
 gem 'bcrypt'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'mini_magick'
+gem 'fog'
+gem 'kaminari'
+gem 'kawaii_email_address'
 
 group :production do
   gem 'pg'
@@ -47,7 +53,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  gem 'capybara'
+  gem 'poltergeist'
   gem 'selenium-webdriver'  
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -59,7 +66,13 @@ group :development, :test do
   gem 'faker'
 
   gem 'pry-rails'
+  gem 'launchy'
 end
+
+group :test do
+
+end
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

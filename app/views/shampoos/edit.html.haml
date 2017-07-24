@@ -1,0 +1,21 @@
+%h1 Shampoos#edit
+%p Find me in app/views/shampoos/edit.html.haml
+
+%h1 Edit Shampoo
+
+= form_for(@shampoo, action: 'update') do |f|
+  = render 'shared/error_messages', object: f.object
+
+  = f.label :name
+  = f.text_field :name
+
+  = f.label :price
+  = f.number_field :price
+
+  = f.label :storage
+  = f.number_field :storage
+
+  = f.label :image
+  = f.file_field :image
+
+  = f.submit "Edit Shampoooooo!"

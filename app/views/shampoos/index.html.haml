@@ -1,0 +1,44 @@
+%h1 Shampoos#index
+%p Find me in app/views/shampoos/index.html.haml
+
+
+
+-if logged_in?
+  %p
+    = link_to "New Shampoo", new_shampoo_path
+  - @shampoos.each do |shampoo|
+    .shampoos
+      %p
+        = image_tag shampoo.image.url, width: "500" if shampoo.image?
+      %p
+        Shampoo Name : 
+        = link_to "#{shampoo.name}", shampoo_path(shampoo)
+      %p
+        Shampoo Storage : 
+        = shampoo.storage
+        ml
+      %p
+        Shampoo Price : 
+        = shampoo.price
+        yen
+
+      .tag
+        - shampoo.tags.each do |tag|
+          %span 
+            &= "#" + "#{ tag.name }" 
+          %span.user-id
+            userName: 
+            = tag.user.name
+
+      = form_for (@tag) do |f|
+        = render 'shared/error_messages', object: f.object
+
+        = f.label :name
+        = f.text_field :name
+
+        = f.hidden_field :shampoo_id, value: shampoo.id
+
+        = f.submit "Post taaaaag!"
+
+
+  = paginate @shampoos

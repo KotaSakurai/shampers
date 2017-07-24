@@ -3,7 +3,10 @@
 - if logged_in?
   = link_to "log out", logout_path,method: :delete
   = link_to "Settings", edit_user_path(current_user)
-
 - else
   = link_to "log in", login_path
 
+= link_to "Shampoo", shampoos_path
+
+- unless logged_in?
+  = link_to "Sign up", signup_path
