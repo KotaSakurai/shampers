@@ -29,6 +29,9 @@
           %span.user-id
             userName: 
             = tag.user.name
+          %span.tag_delete
+            = link_to "delete", tag, method: :delete, data:{confirm: "you sure? " }
+
 
       = form_for (@tag) do |f|
         = render 'shared/error_messages', object: f.object
