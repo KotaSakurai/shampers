@@ -27,7 +27,7 @@
           %span 
             &= "#" + "#{ tag.name }" 
           %span.user-id
-            userName: 
+            username: 
             = tag.user.name
           %span.tag_delete
             = link_to "delete", tag, method: :delete, data:{confirm: "you sure? " }
