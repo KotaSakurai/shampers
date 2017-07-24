@@ -124,11 +124,11 @@ RSpec.describe "Users", type: :request do
 
     before do
       post login_path, params: { session: { email: user.email, password: user.password } }
-      delete user_path(other_user), params: { id: other_user.id } 
+      delete user_path(other_user), params: { id: other_user.id }
       # post login_path, params: { session: { email: user.email, password: user.password } }
     end
 
-    it { expect(response).to redirect_to user_path(user)}
-    #it { expect { delete user_path(id: other_user.id) }.to change{ User.count }.by(-1) }
+    it { expect(response).to redirect_to user_path(user) }
+    # it { expect { delete user_path(id: other_user.id) }.to change{ User.count }.by(-1) }
   end
 end
