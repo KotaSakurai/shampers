@@ -31,6 +31,14 @@ Capybara.javascript_driver = :poltergeist
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+module SessionsHelper
+  def login_as(user, remember_me: '0')
+    return unless user
+    post login_path, params: { session: { email: user.email, password: user.password,
+                                          remember_me: remember_me } }
+  end
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
