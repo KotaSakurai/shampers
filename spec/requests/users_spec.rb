@@ -117,4 +117,18 @@ RSpec.describe "Users", type: :request do
     it { is_expected.to render_template 'show' }
     it { expect(response.body).to match user.name }
   end
+
+  describe '#destroy' do
+    let(:user) { create(:user) }
+    let!(:other_user) { create(:other_user) }
+
+    before do
+      post login_path, params: { session: { email: user.email, password: user.password } }
+      delete user_path(other_user), params: { id: other_user.id } 
+      # post login_path, params: { session: { email: user.email, password: user.password } }
+    end
+
+    it { expect(response).to redirect_to user_path(user)}
+    #it { expect { delete user_path(id: other_user.id) }.to change{ User.count }.by(-1) }
+  end
 end

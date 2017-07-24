@@ -7,6 +7,7 @@ FactoryGirl.define do
     age 23
     gender 1
     activated true
+    admin 1
   end
 
   factory :active_user do
