@@ -10,7 +10,6 @@ RSpec.describe "Tags", type: :request do
       delete tag_path(tag), params: { id: tag.id }
     end
 
-
     it { expect(response).to redirect_to root_url }
   end
 end
