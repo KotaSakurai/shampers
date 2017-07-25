@@ -31,4 +31,14 @@
         %span.tag_delete
           = link_to "delete", tag, method: :delete, data:{confirm: "you sure? " }
 
+    = form_for (@tag) do |f|
+      = render 'shared/error_messages', object: f.object
+
+      = f.label :Tag
+      = f.text_field :name
+
+      = f.hidden_field :shampoo_id, value: tag.shampoo.id
+
+      = f.submit "Post taaaaag!"
+
 = paginate @search
