@@ -1,0 +1,34 @@
+%h1 SearchTags#index
+%p Find me in app/views/search_tags/index.html.haml
+
+%h1 
+  &= '#'
+  = @search_word
+
+- @search.each do |tag|
+  .shampoos
+    %p
+      = image_tag tag.shampoo.image.url, width: "500" if tag.shampoo.image?
+    %p
+      Shampoo Name : 
+      = link_to "#{tag.shampoo.name}", shampoo_path(tag.shampoo)
+    %p
+      Shampoo Storage : 
+      = tag.shampoo.storage
+      ml
+    %p
+      Shampoo Price : 
+      = tag.shampoo.price
+      yen
+
+    .tag
+      - tag.shampoo.tags.each do |tag|
+        %span 
+          = link_to "#" + "#{ tag.name }", search_tags_index_path(params: { search_word: tag.name })
+        %span.user-id
+          username: 
+          = tag.user.name
+        %span.tag_delete
+          = link_to "delete", tag, method: :delete, data:{confirm: "you sure? " }
+
+= paginate @search

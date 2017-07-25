@@ -1,0 +1,2 @@
+module SearchTagsHelper
+end

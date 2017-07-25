@@ -1,8 +1,3 @@
-%h1 Shampoos#index
-%p Find me in app/views/shampoos/index.html.haml
-
-
-
 -if logged_in?
   %p
     = link_to "New Shampoo", new_shampoo_path
@@ -25,10 +20,13 @@
       .tag
         - shampoo.tags.each do |tag|
           %span 
-            &= "#" + "#{ tag.name }" 
+            = link_to "#" + "#{ tag.name }", search_tags_index_path(params: { search_word: tag.name })
           %span.user-id
-            userName: 
+            username: 
             = tag.user.name
+          %span.tag_delete
+            = link_to "delete", tag, method: :delete, data:{confirm: "you sure? " }
+
 
       = form_for (@tag) do |f|
         = render 'shared/error_messages', object: f.object
