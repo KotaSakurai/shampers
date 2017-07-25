@@ -10,7 +10,7 @@ RSpec.describe UserMailer, type: :mailer do
       # expect(mail.to).to eq(["to@example.org"])
     end
     context "renders the headers from " do
-      it { expect(mail.from).to eq(["noreply@shampers.com"]) }
+      it { expect(mail.from).to eq(["shampers.noreply@gmail.com"]) }
     end
 
     # it "renders the body" do
