@@ -6,14 +6,47 @@
   text-align: center;
   margin: auto;
   margin-bottom: 40px;
-  border: solid 1px #555;
+  border: solid 1px #efefef;
   width: 700px;
 }
 
-.user-id {
-  font-size: 8px;
+
+a {
+  color: #333;
+  text-decoration: none;
 }
 
-.tag_delete {
+.center {
+  margin: 0 auto 0;
+}
+.inline-center {
+  text-align: center;
+}
+.shampoo-name {
+  margin: 0px;
+  border-bottom: 1px #efefef solid;
+  padding: 20px;
+}
+.font-style {
+  color: #262626;
+  font-weight: 600;
+}
+
+.image {
+  box-shadow: 0px 5px 8px -5px rgba(0, 0, 0, 0.4);
+}
+
+.info {
+  display: inline-block;
+  margin:5px 10px 5px 10px;
+}
+
+.font-mini {
   font-size: 7px;
+}
+
+.new_tag {
+  border-top: 1px #efefef solid;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
