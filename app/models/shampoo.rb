@@ -6,5 +6,4 @@ class Shampoo < ApplicationRecord
   validates :price, presence: true, numericality: { less_than: 1000 }
   validates :storage, presence: true, numericality: { less_than: 1000 }
   validates :image, presence: true
-
 end

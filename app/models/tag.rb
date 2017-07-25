@@ -5,11 +5,11 @@ class Tag < ApplicationRecord
   belongs_to :user
   belongs_to :shampoo
 
-  def self.search(search)
-    if search
-      Tag.where(['name LIKE ?', "#{sanitize_sql_like(search)}"])
+  def self.search(search_word)
+    if search_word
+      Tag.where(['name LIKE ?', "#{sanitize_sql_like(search_word)}"])
     else
-      false
+      Tag.none
     end
   end
 end

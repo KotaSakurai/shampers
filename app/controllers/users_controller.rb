@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     else
       flash[:danger] = 'not deleted'
     end
-    redirect_to user_path root_url
+    redirect_to root_url
   end
 
   private

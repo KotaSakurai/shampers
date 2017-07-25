@@ -124,7 +124,7 @@ RSpec.describe "Users", type: :request do
       delete user_path(other_user), params: { id: other_user.id }
     end
 
-    it { expect(response).to redirect_to user_path(user) }
+    it { expect(response).to redirect_to root_url }
     # it { expect { delete user_path(id: other_user.id) }.to change{ User.count }.by(-1) }
   end
 end
