@@ -15,8 +15,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = ActivationMailer.new(User.new(user_params))
-    if @user.save
+    @user = User.new(user_params)
+    user = ActivationMailer.new(@user)
+    if user.save
       flash[:info] = "Please check your email to active your account"
       redirect_to root_url
     else
@@ -25,11 +26,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     if @user.update_attributes(user_params)
       flash[:sucess] = "Profile updated"
       redirect_to @user
@@ -39,9 +40,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = 'User deleted'
-    redirect_to user_path current_user
+    user = User.find_by(id: params[:id])
+    if user
+      user.destroy
+      flash[:success] = 'User deleted'
+    else
+      flash[:danger] = 'not deleted'
+    end
+    redirect_to user_path root_url
   end
 
   private
