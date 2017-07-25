@@ -11,6 +11,7 @@ module Shampers
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+    config.eager_load_paths += %W( #{config.root}/lib )
     config.autoload_paths += Dir["#{config.root}/lib"]
     config.autoload_paths += %W(#{config.root}/lib/validates)
     config.autoload_paths += %W(#{config.root}/lib/decorators)
