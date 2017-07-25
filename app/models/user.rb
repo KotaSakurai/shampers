@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 }, allow_nil: true,
                     uniqueness: { case_sensitive: false }
   validates_with EmailValidator
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, length: { minimum: 6 }, allow_nil: true
   validates :age, presence: true, allow_nil: true
   validates :gender, presence: true, allow_nil: true
   before_save :downcase_email
