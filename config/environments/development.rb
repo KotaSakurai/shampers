@@ -28,8 +28,20 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
+  # config.action_mailer.delivery_method = :test
   config.action_mailer.default_url_options = { host: 'localhost', protocol: 'http', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  # host = 'shampers.herokuapp.com'
+  # config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address        => 'smtp.gmail.com',
+    :port           => '587',
+    :domain         => 'gmail.com',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD']
+  }
 
   config.action_mailer.perform_caching = false
 
