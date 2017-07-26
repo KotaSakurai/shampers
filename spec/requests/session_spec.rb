@@ -16,6 +16,7 @@ describe 'Sessions', type: :request do
 
     context 'success session create' do
       before do
+        binding.pry
         post login_path, params: { session: { email: post_email, password: post_password } }
       end
       it { expect(response).to redirect_to user_path(user) }
