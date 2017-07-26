@@ -14,25 +14,6 @@ FactoryGirl.define do
     end
   end
 
-  factory :active_user do
-    name "Kurosawa2"
-    email "test@test2.com"
-    password "foobar"
-    password_confirmation "foobar"
-    age 23
-    gender 1
-  end
-
-  factory :not_active_user do
-    name "Kurosawa3"
-    email "test@tes3.com"
-    password "foobar"
-    password_confirmation "foobar"
-    age 23
-    gender 1
-    activated false
-  end
-
   factory :other_user, class: User do
     name "takeda"
     email "take@take.com"
