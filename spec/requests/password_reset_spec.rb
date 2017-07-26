@@ -35,4 +35,23 @@ describe 'PasswordReset', type: :request do
       it { expect(flash[:info]).to be_nil }
     end
   end
+
+  # describe '#update' do
+  #   let(:user) { create(:user) }
+
+  #   context "when correct reset password" do
+  #     let(:change_password) { "hogehoge" }
+  #     let(:change_password_confirmation) { "hogehoge"}
+
+  #     before do
+  #       post password_resets_url, params: { password_reset: { email: user.email } }
+  #       user.reload
+  #       binding.pry
+  #       put password_reset_url(user.reset_digest), params: { user: { password: change_password, password_confirmation: change_password_confirmation },email: user.email }
+  #       user.reload
+  #     end
+
+  #     it {is_expected.to redirect_to user}
+  #   end
+  # end
 end

@@ -10,13 +10,12 @@ describe 'Sessions', type: :request do
   end
 
   describe '#create' do
-    let!(:user) { create(:user) }
+    let!(:user) { create(:user, :activated) }
     let(:post_email) { user.email }
     let(:post_password) { user.password }
 
     context 'success session create' do
       before do
-        binding.pry
         post login_path, params: { session: { email: post_email, password: post_password } }
       end
       it { expect(response).to redirect_to user_path(user) }
@@ -84,7 +83,7 @@ describe 'Sessions', type: :request do
   end
 
   describe 'edit must need login' do
-    let(:user) { create(:user) }
+    let(:user) { create(:user, :activated) }
     let(:other_user) { create(:other_user) }
 
     context 'when login ' do

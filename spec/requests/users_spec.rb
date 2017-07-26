@@ -36,7 +36,7 @@ RSpec.describe "Users", type: :request do
   describe '#edit' do
     subject { response }
 
-    let(:user) { create(:user) }
+    let(:user) { create(:user, :activated) }
 
     context 'when logged in user access egit path' do
       before do
@@ -59,7 +59,7 @@ RSpec.describe "Users", type: :request do
   end
 
   describe '#update' do
-    let(:user) { create(:user) }
+    let(:user) { create(:user, :activated) }
 
     before do
       get login_path
@@ -116,7 +116,7 @@ RSpec.describe "Users", type: :request do
   end
 
   describe '#destroy' do
-    let(:user) { create(:user) }
+    let(:user) { create(:user, :activated) }
     let!(:other_user) { create(:other_user) }
 
     before do
