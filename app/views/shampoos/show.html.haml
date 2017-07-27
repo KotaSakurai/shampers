@@ -31,8 +31,9 @@
       %span.font-mini
         &= ':' 
         = tag.user.name
-      %span.font-mini
-        = link_to "delete", tag, method: :delete, data:{confirm: "you sure? " }
+      - if tag.user_id == current_user.id
+        %span.font-mini
+          = link_to "delete", tag, method: :delete, data:{confirm: "you sure? " }
 
 
   = form_for (@tag) do |f|

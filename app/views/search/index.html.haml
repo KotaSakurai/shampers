@@ -23,8 +23,9 @@
         %span.font-mini
           username: 
           = tag.user.name
-        %span.tag_delete
-          = link_to "delete", tag, method: :delete, data:{ confirm: "you sure? " }
+        - if tag.user_id == current_user.id
+          %span.tag_delete
+            = link_to "delete", tag, method: :delete, data:{ confirm: "you sure? " }
 
     = form_for (@tag) do |f|
       = render 'shared/error_messages', object: f.object
