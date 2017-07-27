@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "Tags", type: :request do
-
   let(:tag) { build(:tag) }
-  let(:user) { create(:user,:activated) }
+  let(:user) { create(:user, :activated) }
   let(:shampoo) { create(:shampoo) }
 
-  before do 
-    login_as user 
+  before do
+    login_as user
     post tags_path, params: { tag: { name: params, user_id: user.id, shampoo_id: shampoo.id } }
   end
 
