@@ -1,7 +1,13 @@
 class SearchTagsController < ApplicationController
   def index
-    @search = Tag.search(params[:search_word]).page(params[:page])
-    @search_word = params[:search_word]
-    @tag = Tag.new
+    @word = SearchForm.new(search_word: params[:search_word])
+    if @word.valid?
+      @search = @word.search.page(params[:page])
+    else
+      @search = Tag.none.page(params[:page])
+      flash[:danger] = "word is blank"
+    end
+      @search_word = params[:search_word]
+      @tag = Tag.new
   end
 end

@@ -5,7 +5,8 @@ class ShampoosController < ApplicationController
   end
 
   def show
-    if @shampoo = Shampoo.find_by(id: params[:id])
+    if 
+      @shampoo = Shampoo.find_by(id: params[:id])
     else
       redirect_to root_path
     end

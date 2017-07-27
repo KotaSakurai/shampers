@@ -1,8 +1,8 @@
 %h1.inline-center 
   &= '#'
   = @search_word
-
-- @search.each do |tag|
+-if 
+- @feed.each do |tag|
   .shampoos
     %p
       = image_tag tag.shampoo.image.url, width: "500" if tag.shampoo.image?
@@ -38,4 +38,4 @@
 
       = f.submit "Post taaaaag!"
 
-= paginate @search
+= paginate @feed
