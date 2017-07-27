@@ -24,15 +24,14 @@ describe 'Shampoos', type: :request do
       it { expect(flash[:info]).not_to be_nil }
     end
 
-    context 'invalid shampoo post' do
+    context 'invalid shampoo price post' do
       let(:shampoo) { build(:shampoo) }
 
-      let(:name) { "shampooName" }
       let(:price) { 9000 }
-      let(:storage) { 4500 }
+      let(:image) { fixture_file_upload Rails.root.join('spec', 'fixtures', 'files', 'test.png'), 'image/png' }
 
       before do
-        post shampoos_path, params: { shampoo: { name: name, price: price, storage: storage, image: shampoo.image } }
+        post shampoos_path, params: { shampoo: { name: shampoo.name, price: price, storage: shampoo.storage, image: image } }
       end
 
       it { expect(response).to render_template 'new' }
