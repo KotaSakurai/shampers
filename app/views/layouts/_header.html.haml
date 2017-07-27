@@ -4,7 +4,7 @@
     .logo
       = image_tag("shampoo.png")
 
-.inline-center
+.inline-center.nav
   - unless logged_in?
     |
     = link_to "Sign up", signup_path
@@ -22,4 +22,4 @@
     %p
       = form_tag search_index_path, method: :get do
         = text_field_tag :search_word, params[:search_word]
-        = submit_tag "Search"
+        = submit_tag "Search", class: "search_button"

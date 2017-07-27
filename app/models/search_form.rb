@@ -6,7 +6,6 @@ class SearchForm
   validates :search_word, presence: true
 
   def search
-    # binding.pry
     if valid?
       tag_search = search_word.match(SPECIFY_TAG_REGEX)
       if tag_search
@@ -18,7 +17,7 @@ class SearchForm
         Shampoo.search(search_word)
       end
     else
-      false
+      []
     end
   end
 end
