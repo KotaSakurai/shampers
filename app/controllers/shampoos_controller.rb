@@ -11,6 +11,7 @@ class ShampoosController < ApplicationController
       redirect_to root_path
     end
     @user = current_user
+    @tag = Tag.new
   end
 
   def edit

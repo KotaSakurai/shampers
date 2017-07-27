@@ -1,10 +1,48 @@
-= @shampoo.name
-= @shampoo.price
-= @shampoo.storage
+.shampoos
+  %p.shampoo-name.font-style.b
+    Shampoo Name : 
+    = link_to "#{@shampoo.name}", shampoo_path(@shampoo)
 
-- if @shampoo.image?
-  = image_tag @shampoo.image.url, width: "500"
+  %p.image
+    = image_tag @shampoo.image.url, width: "500" if @shampoo.image?
 
-- if logged_in?
-  - if current_user.admin? # && current_user?(@user)
-    = link_to "delete", @shampoo, method: :delete, data:{confirm: "you sure? " }
+  %ul
+    %li.info
+      %span.font-mini
+        Shampoo Storage : 
+      = @shampoo.storage
+      %span.font-mini
+        ml
+    %li.info
+      %span.font-mini
+        Shampoo Price : 
+      = @shampoo.price
+      %span.font-mini
+        yen
+
+  - if logged_in?
+    - if current_user.admin? # && current_user?(@user)
+      = link_to "delete", @shampoo, method: :delete, data:{confirm: "you sure? " }
+
+  .tag
+    - @shampoo.tags.each do |tag|
+      %span 
+        = link_to "#" + "#{ tag.name }", search_index_path(params: { search_word: '#' + tag.name })
+      %span.font-mini
+        &= ':' 
+        = tag.user.name
+      %span.font-mini
+        = link_to "delete", tag, method: :delete, data:{confirm: "you sure? " }
+
+
+  = form_for (@tag) do |f|
+    = render 'shared/error_messages', object: f.object
+
+    = f.label :Tag
+    = f.text_field :name
+
+    = f.hidden_field :shampoo_id, value: @shampoo.id
+
+    = f.submit "Post taaaaag!"
+
+
