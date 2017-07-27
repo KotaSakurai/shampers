@@ -6,9 +6,9 @@ class TagsController < ApplicationController
     @tag = current_user.tags.build(tag_params)
     if @tag.save
       flash[:info] = "Posted Shampoo!"
-      redirect_to root_path
+      redirect_to root_url
     else
-      flash[:denger] = "You couldn't post"
+      flash[:danger] = "You couldn't post"
       redirect_to root_url
     end
   end
