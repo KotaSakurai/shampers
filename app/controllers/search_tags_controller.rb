@@ -7,7 +7,7 @@ class SearchTagsController < ApplicationController
       @search = Tag.none.page(params[:page])
       flash[:danger] = "word is blank"
     end
-      @search_word = params[:search_word]
-      @tag = Tag.new
+    @search_word = params[:search_word]
+    @tag = Tag.new
   end
 end

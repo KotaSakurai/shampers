@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :shampoos
   resources :tags, only: [:new, :create, :destroy]
-  # resources :searchtags
   resources :search
   root 'shampoos#index'
 end

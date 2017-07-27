@@ -6,14 +6,16 @@ class SearchForm
   validates :search_word, presence: true
 
   def search
+    # binding.pry
     if valid?
       tag_search = search_word.match(SPECIFY_TAG_REGEX)
       if tag_search
-        Tag.search(tag_search[1])
-        binding.pry
+        tags = Tag.search(tag_search[1])
+        tags.map do |tag|
+          tag.shampoo
+        end
       else
         Shampoo.search(search_word)
-        binding.pry
       end
     else
       false
