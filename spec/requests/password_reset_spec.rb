@@ -78,7 +78,7 @@ describe 'PasswordReset', type: :request do
       let(:change_password_confirmation) { "hogehoge" }
 
       it { is_expected.to redirect_to root_path }
-    end 
+    end
 
     context "when over expiration" do
       let(:change_password) { "hogehoge" }
@@ -90,6 +90,6 @@ describe 'PasswordReset', type: :request do
       end
 
       it { is_expected.to redirect_to root_path }
-    end 
+    end
   end
 end
