@@ -1,7 +1,7 @@
 = form_for (@tag) do |f|
   = render 'shared/error_messages', object: f.object
 
-  = f.label :Tag ,class: "zilla"
+  = f.label :Tag ,class: "zilla center"
   = f.text_field :name
 
   = f.hidden_field :shampoo_id, value: shampoo.id

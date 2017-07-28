@@ -1,11 +1,11 @@
 %p.shampoo-name.font-style.b
-  Shampoo Name : 
+  &= ':'
   = link_to "#{shampoo.name}", shampoo_path(shampoo)
 
 %p.image
   = image_tag shampoo.image.url, width: "500" if shampoo.image?
 
-%ul.zilla
+%ul.zilla.shampoo-info
   %li.info
     %span.font-mini
       Storage : 
