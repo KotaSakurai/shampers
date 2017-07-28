@@ -48,4 +48,24 @@ RSpec.describe Tag, type: :model do
       it { is_expected.to be_invalid }
     end
   end
+
+  describe 'search method' do
+    before do
+      create(:user)
+      create(:shampoo)
+      create(:tag)
+    end
+
+    context "when search hit" do
+      let(:search_tag) { "good" }
+
+      it { expect(Tag.search(search_tag)).not_to be_empty }
+    end
+
+    context "when search no hit" do
+      let(:search_tag) { "aaa" }
+
+      it { expect(Tag.search(search_tag)).to be_empty }
+    end
+  end
 end
