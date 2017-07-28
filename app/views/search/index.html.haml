@@ -1,40 +1,11 @@
-%h1.inline-center 
+%h1.inline-center.zilla
   = @search_word
 - @feed.each do |shampoo|
   .shampoos
-    %p
-      = image_tag shampoo.image.url, width: "500" if shampoo.image?
-    %p
-      Shampoo Name : 
-      = link_to "#{shampoo.name}", shampoo_path(shampoo)
-    %p
-      Shampoo Storage : 
-      = shampoo.storage
-      ml
-    %p
-      Shampoo Price : 
-      = shampoo.price
-      yen
+    = render 'layouts/shampoo', { shampoo: shampoo }
 
-    .tag
-      - shampoo.tags.each do |tag|
-        %span 
-          = link_to "#" + "#{ tag.name }", search_index_path(params: { search_word: '#' + tag.name })
-        %span.font-mini
-          username: 
-          = tag.user.name
-        - if tag.user_id == current_user.id
-          %span.tag_delete
-            = link_to "delete", tag, method: :delete, data:{ confirm: "you sure? " }
-
-    = form_for (@tag) do |f|
-      = render 'shared/error_messages', object: f.object
-
-      = f.label :Tag
-      = f.text_field :name
-
-      = f.hidden_field :shampoo_id, value: shampoo.id
-
-      = f.submit "Post taaaaag!"
+    = render 'layouts/tag', { shampoo: shampoo}
+        
+    = render 'layouts/tag_form', { shampoo: shampoo}
       
     = paginate @feed

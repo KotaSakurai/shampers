@@ -21,5 +21,5 @@
     = link_to "Shampoos", shampoos_path
     %p
       = form_tag search_index_path, method: :get do
-        = text_field_tag :search_word, params[:search_word]
+        = text_field_tag :search_word, params[:search_word], placeholder: "Shampoo or #"
         = submit_tag "Search", class: "search_button"
