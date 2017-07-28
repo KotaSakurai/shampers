@@ -16,9 +16,10 @@ RSpec.describe PasswordResetsController, type: :controller do
   end
 
   # describe "GET #update" do
-  #   it "returns http success" do
-  #     get :update
-  #     expect(response).to have_http_status(:success)
+
+  #   context "returns http success" do
+  #     before { patch :update }
+  #     it { expect(response).to have_http_status(:success) }
   #   end
   # end
 end
