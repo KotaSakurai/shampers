@@ -69,5 +69,11 @@ RSpec.describe Shampoo, type: :model do
 
       it { expect(Shampoo.search(search_tag)).to be_empty }
     end
+
+    context "when no search word" do
+      let(:search_tag) { '' }
+
+      it { expect(Shampoo.search(search_tag)).to be_empty }
+    end
   end
 end
