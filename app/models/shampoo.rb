@@ -8,7 +8,7 @@ class Shampoo < ApplicationRecord
   validates :image, presence: true
 
   def self.search(search_word)
-    if search_word
+    unless search_word.empty?
       Shampoo.where(['name LIKE ?', "#{sanitize_sql_like(search_word)}"]).to_a
     else
       # Shampoo.none
