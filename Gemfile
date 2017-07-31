@@ -45,6 +45,8 @@ gem 'fog'
 gem 'kaminari'
 gem 'kawaii_email_address'
 
+gem 'simplecov', :require => false, :group => :test
+
 group :production do
   gem 'pg'
 end

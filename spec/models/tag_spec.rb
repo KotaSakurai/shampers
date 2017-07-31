@@ -67,5 +67,11 @@ RSpec.describe Tag, type: :model do
 
       it { expect(Tag.search(search_tag)).to be_empty }
     end
+
+    context "when no search word" do
+      let(:search_tag) { '' }
+
+      it { expect(Tag.search(search_tag)).to be_empty }
+    end
   end
 end
