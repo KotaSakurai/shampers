@@ -1,5 +1,6 @@
--if logged_in?
-  - if @shampoos
+- if logged_in?
+  - binding.pry
+  - unless @shampoos.empty?
     - @shampoos.each do |shampoo|
       .shampoos
         = render 'layouts/shampoo', { shampoo: shampoo }
