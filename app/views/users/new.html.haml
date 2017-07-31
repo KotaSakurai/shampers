@@ -1,24 +1,32 @@
-%h1 Sign up
+.inline-center
 
-= form_for(@user) do |f|
-  = render 'shared/error_messages', object: f.object
+  %h1 Sign up
 
-  = f.label :name
-  = f.text_field :name
+  = form_for(@user) do |f|
+    = render 'shared/error_messages', object: f.object
 
-  = f.label :email
-  = f.email_field :email
+    %p
+      = f.label :name
+      = f.text_field :name
+    %p
+      = f.label :email
+      = f.email_field :email
 
-  = f.label :password
-  = f.password_field :password
+    %p
+      = f.label :password
+      = f.password_field :password
 
-  = f.label :password_confirmation, "Confirmation"
-  = f.password_field :password_confirmation
+    %p
+      = f.label :password_confirmation, "Confirmation"
+      = f.password_field :password_confirmation
 
-  = f.label :age
-  = f.number_field :age
+    %p
+      = f.label :age
+      = f.number_field :age
 
-  = f.label :gender
-  = f.number_field :gender
-
-  = f.submit "Create my account"
+    %p
+      = f.label :gender
+      = f.number_field :gender
+      
+    %p
+      = f.submit "Create my account"
