@@ -37,7 +37,6 @@ RSpec.describe Tag, type: :model do
       let(:first_tag) { create(:tag) }
       let(:second_tag) { create(:tag, { name: first_tag.name, shampoo_id: 2 }) }
       let(:dup_tag) { build(:tag, { name: first_tag.name, shampoo_id: 2 }) }
-      let(:params) { {} }
 
       before do
         create(:user)
