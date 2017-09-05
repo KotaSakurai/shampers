@@ -1,0 +1,10 @@
+.tag
+  - shampoo.tags.each do |tag|
+    %span 
+      = link_to "#" + "#{ tag.name }", search_index_path(params: { search_word: '#' + tag.name })
+    %span.font-mini
+      &= ':' 
+      = tag.user.name
+    - if tag.user_id == current_user.id
+      %span.font-mini
+        = link_to "delete", tag, method: :delete, data:{confirm: "you sure? " }

@@ -22,3 +22,13 @@
 .center {
   margin: auto ;
 }
+
+body {
+  background: #FAFAFA;
+}
+
+footer {
+  margin-top: 30px;
+  font-size: 8px;
+  text-align: center;
+}

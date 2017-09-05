@@ -51,4 +51,29 @@ RSpec.describe Shampoo, type: :model do
       it { is_expected.to be_invalid }
     end
   end
+
+  describe 'search method' do
+    before do
+      create(:user)
+      create(:shampoo)
+    end
+
+    context "when search hit" do
+      let(:search_tag) { "revuel" }
+
+      it { expect(Shampoo.search(search_tag)).not_to be_empty }
+    end
+
+    context "when search no hit" do
+      let(:search_tag) { "aaa" }
+
+      it { expect(Shampoo.search(search_tag)).to be_empty }
+    end
+
+    context "when no search word" do
+      let(:search_tag) { '' }
+
+      it { expect(Shampoo.search(search_tag)).to be_empty }
+    end
+  end
 end

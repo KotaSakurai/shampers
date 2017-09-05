@@ -13,7 +13,7 @@ RSpec.describe "Users", type: :request do
     let(:user) { build(:user) }
 
     before do
-      post users_path, params: { user: { name: user.name, email: user.email,
+      post users_path, params: { user: { name: user.name, email: email,
                                          password: user.password,
                                          password_confirmation: user.password_confirmation,
                                          age: 3,
@@ -21,6 +21,8 @@ RSpec.describe "Users", type: :request do
     end
 
     context 'with correct user info not activate' do
+      let(:email) { user.email }
+
       it { expect(flash[:info]).not_to be_nil }
       it { expect(session[:user_id]).to be_nil }
     end
@@ -28,8 +30,9 @@ RSpec.describe "Users", type: :request do
     context 'with wrong email' do
       let(:email) { 'aaa' }
 
-      it { expect(flash[:success]).to be_nil }
+      it { expect(flash[:info]).to be_nil }
       it { expect(session[:user_id]).to be_nil }
+      it { expect(response).to render_template 'new' }
     end
   end
 
@@ -119,12 +122,23 @@ RSpec.describe "Users", type: :request do
     let(:user) { create(:user, :activated) }
     let!(:other_user) { create(:other_user) }
 
-    before do
-      post login_path, params: { session: { email: user.email, password: user.password } }
-      delete user_path(other_user), params: { id: other_user.id }
+    context 'success destroy' do
+      before do
+        post login_path, params: { session: { email: user.email, password: user.password } }
+        delete user_path(other_user), params: { id: other_user.id }
+      end
+
+      it { expect(response).to redirect_to root_url }
     end
 
-    it { expect(response).to redirect_to root_url }
-    # it { expect { delete user_path(id: other_user.id) }.to change{ User.count }.by(-1) }
+    context 'not success destroy' do
+      before do
+        post login_path, params: { session: { email: user.email, password: user.password } }
+        delete user_path(id: 300), params: { id: 300 }
+      end
+
+      it { expect(response).to redirect_to root_url }
+      it { expect(flash[:danger]).not_to be_nil }
+    end
   end
 end

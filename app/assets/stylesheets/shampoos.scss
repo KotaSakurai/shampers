@@ -3,11 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .shampoos {
-  text-align: center;
   margin: auto;
   margin-bottom: 40px;
   border: solid 1px #efefef;
   width: 700px;
+  background-color: #FFFFFF;
 }
 
 
@@ -26,6 +26,7 @@ a {
   margin: 0px;
   border-bottom: 1px #efefef solid;
   padding: 20px;
+  text-align: left;
 }
 .font-style {
   color: #262626;
@@ -34,6 +35,12 @@ a {
 
 .image {
   box-shadow: 0px 5px 8px -5px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.shampoo-info {
+  text-align: right;
+  padding-right: 30px;
 }
 
 .info {
@@ -45,8 +52,23 @@ a {
   font-size: 7px;
 }
 
+.tag {
+  color: 003569;
+  padding:30px;
+}
+
 .new_tag {
   border-top: 1px #efefef solid;
   padding-bottom: 10px;
   padding-top: 10px;
+  text-align: center;
+
+}
+
+.nav {
+  padding: 10px;
+  font-family: 'Zilla Slab', serif;
+}
+.zilla {
+  font-family: 'Zilla Slab', serif;
 }

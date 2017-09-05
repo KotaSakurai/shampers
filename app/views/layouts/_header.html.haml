@@ -4,20 +4,19 @@
     .logo
       = image_tag("shampoo.png")
 
-.inline-center
-  - if logged_in?
+.inline-center.nav
+  - unless logged_in?
+    = link_to "Sign up", signup_path
+    |
+    = link_to "log in", login_path
+    |
+  - else
     = link_to "log out", logout_path,method: :delete
     |
     = link_to "Settings", edit_user_path(current_user)
     |
     = link_to "New Shampoo", new_shampoo_path
-    |
-  - else
-    = link_to "log in", login_path
-    |
-
-  = link_to "Shampoos", shampoos_path
-  |
-
-  - unless logged_in?
-    = link_to "Sign up", signup_path
+    %p
+      = form_tag search_index_path, method: :get do
+        = text_field_tag :search_word, params[:search_word], placeholder: "Shampoo or #"
+        = submit_tag "Search", class: "search_button"

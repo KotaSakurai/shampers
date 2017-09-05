@@ -1,0 +1,11 @@
+%h1.inline-center.zilla
+  = @search_word
+- @feed.each do |shampoo|
+  .shampoos
+    = render 'layouts/shampoo', { shampoo: shampoo }
+
+    = render 'layouts/tag', { shampoo: shampoo}
+        
+    = render 'layouts/tag_form', { shampoo: shampoo}
+      
+    = paginate @feed

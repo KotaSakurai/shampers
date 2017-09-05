@@ -1,48 +1,12 @@
--if logged_in?
-  - if @shampoos
+- if logged_in?
+  - unless @shampoos.empty?
     - @shampoos.each do |shampoo|
       .shampoos
-        %p.shampoo-name.font-style.b
-          Shampoo Name : 
-          = link_to "#{shampoo.name}", shampoo_path(shampoo)
+        = render 'layouts/shampoo', { shampoo: shampoo }
 
-        %p.image
-          = image_tag shampoo.image.url, width: "500" if shampoo.image?
-
-        %ul
-          %li.info
-            %span.font-mini
-              Shampoo Storage : 
-            = shampoo.storage
-            %span.font-mini
-              ml
-          %li.info
-            %span.font-mini
-              Shampoo Price : 
-            = shampoo.price
-            %span.font-mini
-              yen
-
-        .tag
-          - shampoo.tags.each do |tag|
-            %span 
-              = link_to "#" + "#{ tag.name }", search_tags_index_path(params: { search_word: tag.name })
-            %span.font-mini
-              &= ':' 
-              = tag.user.name
-            %span.font-mini
-              = link_to "delete", tag, method: :delete, data:{confirm: "you sure? " }
-
-
-        = form_for (@tag) do |f|
-          = render 'shared/error_messages', object: f.object
-
-          = f.label :Tag
-          = f.text_field :name
-
-          = f.hidden_field :shampoo_id, value: shampoo.id
-
-          = f.submit "Post taaaaag!"
-
-
-    = paginate @shampoos
+        = render 'layouts/tag', { shampoo: shampoo}
+        
+        = render 'layouts/tag_form', { shampoo: shampoo}
+        
+    .inline-center.zilla
+      = paginate @shampoos
