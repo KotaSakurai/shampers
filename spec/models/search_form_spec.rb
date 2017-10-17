@@ -12,13 +12,13 @@ RSpec.describe SearchForm, type: :model do
   end
 
   context "tag search not find" do
-    let(:tag_search) { "#aaa" }
+    let(:tag_search) { "#aaaaa" }
 
     it { is_expected.to be_empty }
   end
 
-  context "tag search" do
-    let(:tag_search) { "#good" }
+  context "tag search found" do
+    let(:tag_search) { "#aaa" }
 
     it { is_expected.not_to be_empty }
   end

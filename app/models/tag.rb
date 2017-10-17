@@ -7,7 +7,7 @@ class Tag < ApplicationRecord
 
   def self.search(search_word)
     unless search_word.empty?
-      Tag.where(['name LIKE ?', "#{sanitize_sql_like(search_word)}"]).to_a
+      Tag.where(['name == ?', "#{sanitize_sql_like(search_word)}"]).to_a
     else
       # Tag.none
       []
