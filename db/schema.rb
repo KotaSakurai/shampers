@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170719071229) do
     t.string "name"
     t.integer "price"
     t.integer "storage"
+    t.string "amazon_url"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
