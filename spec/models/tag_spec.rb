@@ -34,7 +34,7 @@ RSpec.describe Tag, type: :model do
     end
 
     context 'when name duplicate tag name and shampoo_id for uniquness scope' do
-      let(:shampoo) { create(:shampoo)}
+      let(:shampoo) { create(:shampoo) }
       let(:first_tag) { create(:tag, shampoo_id: shampoo.id) }
       let(:params) { { name: first_tag.name, shampoo_id: shampoo.id } }
 
