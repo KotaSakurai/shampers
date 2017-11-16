@@ -1,12 +1,11 @@
-- if logged_in?
-  - unless @shampoos.empty?
-    - @shampoos.each do |shampoo|
-      .shampoos
-        = render 'layouts/shampoo', { shampoo: shampoo }
+- unless @shampoos.empty?
+  - @shampoos.each do |shampoo|
+    .shampoos
+      = render 'layouts/shampoo', { shampoo: shampoo }
 
-        = render 'layouts/tag', { shampoo: shampoo}
-        
-        = render 'layouts/tag_form', { shampoo: shampoo}
-        
-    .inline-center.zilla
-      = paginate @shampoos
+      = render 'layouts/tag', { shampoo: shampoo}
+      
+      = render 'layouts/tag_form', { shampoo: shampoo}
+      
+  .inline-center.zilla
+    = paginate @shampoos
