@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = current_user.tags.build(tag_params)
+    @tag = Tag.new(tag_params.merge(user_id: 1))
     if @tag.save
       flash[:info] = "Posted Shampoo!"
       redirect_to root_url
