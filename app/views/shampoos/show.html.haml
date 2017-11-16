@@ -8,8 +8,9 @@
 
   %ul
     %li.info
-      %span.font-mini
-        = link_to "買う", @shampoo.amazon_url.to_s + "&tag=sakusaku0e1-22"
+      - unless @shampoo.amazon_url.nil?
+        %span.font-mini
+          = link_to "買う", @shampoo.amazon_url.to_s + "&tag=sakusaku0e1-22"
     %li.info
       %span.font-mini
         Shampoo Storage : 
