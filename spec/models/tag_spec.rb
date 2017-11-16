@@ -34,15 +34,13 @@ RSpec.describe Tag, type: :model do
     end
 
     context 'when name duplicate tag name and shampoo_id for uniquness scope' do
-      let(:first_tag) { create(:tag) }
-      let(:second_tag) { create(:tag, { name: first_tag.name, shampoo_id: 2 }) }
-      let(:dup_tag) { build(:tag, { name: first_tag.name, shampoo_id: 2 }) }
-      let(:params) { {} }
+      let(:shampoo) { create(:shampoo) }
+      let(:first_tag) { create(:tag, shampoo_id: shampoo.id) }
+      let(:params) { { name: first_tag.name, shampoo_id: shampoo.id } }
 
       before do
         create(:user)
-        create(:shampoo)
-        dup_tag.save
+        tag.save
       end
 
       it { is_expected.to be_invalid }
