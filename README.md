@@ -1,24 +1,22 @@
-# README
+# Shampers
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- started clone and bundle install!
 
-Things you may want to cover:
+```
+$ git clone git@github.com:KotaSakurai/shampers.git
+$ cd shampers
+$ bundle
+$ rails db:migrate
+```
 
-* Ruby version
+# Using rmagick(imagemagick)
 
-* System dependencies
+ImageMagick version 7 not work.
+So, Install ImageMagick Version 6.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+for Mac
+```
+$ brew install imagemagick@6
+$ brew link imagemagick@6 --force
+$ echo 'export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"' >> ~/.your_shell_sh_file
+```
