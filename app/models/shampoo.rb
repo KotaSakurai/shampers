@@ -9,9 +9,8 @@ class Shampoo < ApplicationRecord
 
   def self.search(search_word)
     unless search_word.empty?
-      Shampoo.where(['name == ?', "#{sanitize_sql_like(search_word)}"]).to_a
+      Shampoo.where(['name = ?', "#{sanitize_sql_like(search_word)}"]).to_a
     else
-      # Shampoo.none
       []
     end
   end
