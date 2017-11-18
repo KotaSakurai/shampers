@@ -7,6 +7,10 @@
 
 %ul.zilla.shampoo-info
   %li.info
+    - unless shampoo.amazon_url.nil?
+      %span
+        = link_to "買う", shampoo.amazon_url.to_s + "&tag=sakusaku0e1-22"
+  %li.info
     %span.font-mini
       Storage : 
     = shampoo.storage
