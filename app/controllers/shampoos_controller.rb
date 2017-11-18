@@ -51,6 +51,6 @@ class ShampoosController < ApplicationController
   private
 
   def shampoo_params
-    params.require(:shampoo).permit(:name, :price, :storage, :image)
+    params.require(:shampoo).permit(:name, :price, :storage, :amazon_url, :image)
   end
 end
