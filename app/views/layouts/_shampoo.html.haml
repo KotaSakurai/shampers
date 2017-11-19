@@ -3,7 +3,8 @@
   = link_to "#{shampoo.name}", shampoo_path(shampoo)
 
 .image
-  = image_tag shampoo.image.url, width: "500" if shampoo.image?
+  - unless shampoo.image.nil?
+    = image_tag shampoo.image.url, width: "500" if shampoo.image?
 
 %ul.zilla.shampoo-info
   %li.info
