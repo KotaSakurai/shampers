@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }/
+    %meta{ name: "viewport", content: "width=device-width,initial-scale=1" }
+
+    %title Shampers
+    = csrf_meta_tags
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' 
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload' 
+
+  %body
+    = render "layouts/header"
+    = yield
+    - flash.each do |message_type, message|
+      %div{class: "alert alert-#{message_type} inline-center"}
+        = message
+
+    %footer
+      Shampers all rights reserved. Support on Kota Sakurai.
