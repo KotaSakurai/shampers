@@ -6,19 +6,19 @@ RSpec.describe User, type: :model do
   describe 'create user' do
     let(:user) { build(:user, params) }
 
-    context 'valid' do
+    context 'when valid' do
       let(:params) { { name: 'foo' } }
 
       it { is_expected.to be_valid }
     end
 
-    context 'name is invalid too long length' do
+    context 'when name is invalid too long length' do
       let(:params) { { name: "a" * 51 } }
 
       it { is_expected.to be_invalid }
     end
 
-    context 'email is invalid too long length' do
+    context 'when email is invalid too long length' do
       let(:params) { { email: "a" * 255 + "example.com" } }
 
       it { is_expected.to be_invalid }
@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
       it { is_expected.to be_invalid }
     end
 
-    context 'email duplicate' do
+    context 'when email duplicate' do
       let(:duplicate_user) { build(:user, email: "aaa@aaa.com") }
       let(:params) { { email: "aaa@aaa.com" } }
 
@@ -57,7 +57,7 @@ RSpec.describe User, type: :model do
       it { is_expected.to be_invalid }
     end
 
-    context 'email saved lower-case' do
+    context 'when email saved lower-case' do
       let(:params) { { email: 'Foo@ExAMPle.CoM' } }
 
       before { user.save }

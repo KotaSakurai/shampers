@@ -14,7 +14,7 @@ describe 'Sessions', type: :request do
     let(:post_email) { user.email }
     let(:post_password) { user.password }
 
-    context 'success session create' do
+    context 'when success session create' do
       before do
         post login_path, params: { session: { email: post_email, password: post_password } }
       end
@@ -22,7 +22,7 @@ describe 'Sessions', type: :request do
       it { expect(session[:user_id]).to eq user.id } # sessionが保存されているか？
     end
 
-    context 'with wrong email' do
+    context 'when with wrong email' do
       let(:post_email) { "aa.." }
 
       before {

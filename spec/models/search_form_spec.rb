@@ -11,25 +11,25 @@ RSpec.describe SearchForm, type: :model do
     create(:tag, name: "aaa")
   end
 
-  context "tag search not find" do
+  context "when tag search not find" do
     let(:tag_search) { "#aaaaa" }
 
     it { is_expected.to be_empty }
   end
 
-  context "tag search found" do
+  context "when tag search found" do
     let(:tag_search) { "#aaa" }
 
     it { is_expected.not_to be_empty }
   end
 
-  context "shampoo search not find" do
+  context "when shampoo search not find" do
     let(:tag_search) { "aaa" }
 
     it { is_expected.to be_empty }
   end
 
-  context "shampoo search found" do
+  context "when shampoo search found" do
     let(:tag_search) { "revuel" }
 
     it { is_expected.not_to be_empty }

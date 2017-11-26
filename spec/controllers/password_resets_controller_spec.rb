@@ -4,7 +4,7 @@ RSpec.describe PasswordResetsController, type: :controller do
   describe "GET #create" do
     let(:user) { create(:user, :activated) }
 
-    context "returns http success" do
+    context "when returns http success" do
       before {
         post :create, params: { password_reset: { email: user.email } }
       }

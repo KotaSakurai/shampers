@@ -5,11 +5,11 @@ RSpec.describe UserMailer, type: :mailer do
     let(:user) { build(:user, activation_token: 'token') }
     let(:mail) { UserMailer.account_activation(user) }
 
-    context "renders the headers subject" do
+    context "when renders the headers subject" do
       it { expect(mail.subject).to eq("Account activation") }
       # expect(mail.to).to eq(["to@example.org"])
     end
-    context "renders the headers from " do
+    context "when renders the headers from " do
       it { expect(mail.from).to eq(["shampers.noreply@gmail.com"]) }
     end
 
