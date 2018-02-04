@@ -6,12 +6,4 @@ class Shampoo < ApplicationRecord
   validates :price, presence: true, numericality: { less_than: 10000 }
   validates :storage, presence: true, numericality: { less_than: 1000 }
   validates :image, presence: true
-
-  def self.search(search_word)
-    unless search_word.empty?
-      Shampoo.where(['name = ?', "#{sanitize_sql_like(search_word)}"]).to_a
-    else
-      []
-    end
-  end
 end
