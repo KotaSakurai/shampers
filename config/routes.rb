@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'search_tags/index'
-
-  get 'sessions/new'
-
+  root 'shampoos#index'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -13,6 +10,5 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :shampoos
   resources :tags, only: [:new, :create, :destroy]
-  resources :search
-  root 'shampoos#index'
+  resources :search, only: [:index]
 end
