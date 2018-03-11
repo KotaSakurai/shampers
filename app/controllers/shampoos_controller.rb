@@ -1,6 +1,8 @@
 class ShampoosController < ApplicationController
+  PER_PAGE = 5
+
   def index
-    @shampoos = Shampoo.all.reverse_order.page(params[:page])
+    @shampoos = Shampoo.all.reverse_order.page(params[:page]).per(PER_PAGE)
     @tag = Tag.new
   end
 
