@@ -7,7 +7,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   cloudinary_transformation :angle => :exif
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
   # process :fix_rotate
 
@@ -35,7 +35,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   # process scale: [300, 300]
-  # process resize_to_fit: [300, 300]
+  process resize_to_fit: [500, 500]
   #
   # def scale(width, height)
   #   # do something
