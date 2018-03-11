@@ -38,7 +38,7 @@ describe 'Shampoos', type: :request do
   end
 
   describe '#create' do
-    context 'valid shampoo post' do
+    context 'when valid shampoo post' do
       let(:shampoo) { build(:shampoo) }
       let(:image) { fixture_file_upload Rails.root.join('spec', 'fixtures', 'files', 'test.png'), 'image/png' }
 
@@ -50,7 +50,7 @@ describe 'Shampoos', type: :request do
       it { expect(flash[:info]).not_to be_nil }
     end
 
-    context 'invalid shampoo price post' do
+    context 'when invalid shampoo price post' do
       let(:shampoo) { build(:shampoo) }
 
       let(:price) { 100000 }

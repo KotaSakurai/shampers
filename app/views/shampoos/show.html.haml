@@ -4,7 +4,7 @@
     = link_to "#{@shampoo.name}", shampoo_path(@shampoo)
 
   %p.image
-    = image_tag @shampoo.image.url, width: "500" if @shampoo.image?
+    = cl_image_tag @shampoo.image.url, width: "500" if @shampoo.image?
 
   %ul
     %li.info

@@ -1,6 +1,8 @@
 
 .center.logo
-  = link_to image_tag("shampoo.png"), root_path
+  = link_to root_path do
+    .logo
+      = cl_image_tag("shampoo_c3pxu4.png", :alt => "shampers")
 
 .inline-center.nav
   = link_to "New Shampoo", new_shampoo_path

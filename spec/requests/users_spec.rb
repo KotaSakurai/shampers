@@ -122,7 +122,7 @@ RSpec.describe "Users", type: :request do
     let(:user) { create(:user, :activated) }
     let!(:other_user) { create(:other_user) }
 
-    context 'success destroy' do
+    context 'when success destroy' do
       before do
         post login_path, params: { session: { email: user.email, password: user.password } }
         delete user_path(other_user), params: { id: other_user.id }
@@ -131,7 +131,7 @@ RSpec.describe "Users", type: :request do
       it { expect(response).to redirect_to root_url }
     end
 
-    context 'not success destroy' do
+    context 'when not success destroy' do
       before do
         post login_path, params: { session: { email: user.email, password: user.password } }
         delete user_path(id: 300), params: { id: 300 }

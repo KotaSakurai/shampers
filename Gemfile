@@ -48,6 +48,7 @@ gem 'fog'
 gem 'kaminari'
 gem 'kawaii_email_address'
 gem 'google-analytics-rails'
+gem 'cloudinary'
 
 gem 'simplecov', :require => false, :group => :test
 
