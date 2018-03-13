@@ -1,5 +1,6 @@
 class ShampoosController < ApplicationController
   PER_PAGE = 5
+  protect_from_forgery :except => [:create]
 
   def index
     @shampoos = Shampoo.all.reverse_order.page(params[:page]).per(PER_PAGE)
