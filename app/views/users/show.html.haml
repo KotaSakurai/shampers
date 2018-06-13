@@ -1,8 +1,0 @@
-%p
-  = @user.name 
-%p
-  = @user.email
-
-- if logged_in?
-  - if current_user.admin? && !current_user?(@user)
-    = link_to "delete", @user, method: :delete, data:{confirm: "you sure? " }
