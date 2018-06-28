@@ -8,6 +8,7 @@ RSpec.describe PasswordResetsController, type: :controller do
       before {
         post :create, params: { password_reset: { email: user.email } }
       }
+
       it { expect(response).to have_http_status(302) }
     end
 

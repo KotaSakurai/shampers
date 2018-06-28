@@ -9,6 +9,7 @@ RSpec.describe UserMailer, type: :mailer do
       it { expect(mail.subject).to eq("Account activation") }
       # expect(mail.to).to eq(["to@example.org"])
     end
+
     context "when renders the headers from " do
       it { expect(mail.from).to eq(["shampers.noreply@gmail.com"]) }
     end

@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
   describe '#new' do
-    before { get signup_path }
     subject { response }
+
+    before { get signup_path }
 
     it { is_expected.to be_success }
     it { is_expected.to render_template 'new' }
@@ -89,6 +90,7 @@ RSpec.describe "Users", type: :request do
         put user_path(user), params: { user: { name: long_name } }
         user.reload
       end
+
       it { expect(user.name).not_to eq long_name }
       it { expect(response.status).to eq 200 }
       it { is_expected.to render_template 'edit' }
