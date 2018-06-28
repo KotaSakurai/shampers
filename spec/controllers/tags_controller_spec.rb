@@ -9,6 +9,6 @@ RSpec.describe TagsController, type: :controller do
 
     let!(:tag) { create(:tag) }
 
-    it { expect { delete :destroy, params: { id: tag.id } }.to change { Tag.count }.by(-1) }
+    it { expect { delete :destroy, params: { id: tag.id } }.to change(Tag, :count).by(-1) }
   end
 end

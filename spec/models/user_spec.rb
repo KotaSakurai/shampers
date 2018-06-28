@@ -61,6 +61,7 @@ RSpec.describe User, type: :model do
       let(:params) { { email: 'Foo@ExAMPle.CoM' } }
 
       before { user.save }
+
       it { expect(user.email).to eq "Foo@ExAMPle.CoM".downcase }
     end
 
@@ -102,8 +103,10 @@ RSpec.describe User, type: :model do
     context 'when remember_token nil' do
       it { expect(user.authenticated?(:remember, '')).to eq false }
     end
+
     context 'when valid remember_token' do
       before { user.remember }
+
       it { expect(user.authenticated?(:remember, user.remember_token)).to eq true }
     end
   end

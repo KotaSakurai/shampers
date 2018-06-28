@@ -3,7 +3,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   unless Rails.env.test?
-    include Cloudinary::CarrierWave 
+    include Cloudinary::CarrierWave
     cloudinary_transformation :angle => :exif
   end
 

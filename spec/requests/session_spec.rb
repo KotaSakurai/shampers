@@ -5,6 +5,7 @@ describe 'Sessions', type: :request do
     before do
       get login_path
     end
+
     it { expect(response).to render_template(:new) }
     it { expect(response).to be_success }
   end
@@ -18,6 +19,7 @@ describe 'Sessions', type: :request do
       before do
         post login_path, params: { session: { email: post_email, password: post_password } }
       end
+
       it { expect(response).to redirect_to user_path(user) }
       it { expect(session[:user_id]).to eq user.id } # sessionが保存されているか？
     end
@@ -28,6 +30,7 @@ describe 'Sessions', type: :request do
       before {
         post login_path, params: { session: { email: post_email, password: user.password } }
       }
+
       it { expect(response).to render_template 'new' }
       it { expect(session[:user_id]).to be_nil }
     end
@@ -37,6 +40,7 @@ describe 'Sessions', type: :request do
         get login_path
         post login_path, params: { session: { email: user.email, password: user.password, remember_me: 0 } }
       end
+
       it { expect(response).to redirect_to user_path(user) }
       it { expect(cookies['remember_token']).to eq nil }
     end
@@ -46,6 +50,7 @@ describe 'Sessions', type: :request do
         get login_path
         post login_path, params: { session: { email: user.email, password: user.password, remember_me: 1 } }
       end
+
       it { expect(response).to redirect_to user_path(user) }
       # test内はcookies[:remember_token]は常にnil
       it { expect(cookies['remember_token']).not_to eq nil }
@@ -78,6 +83,7 @@ describe 'Sessions', type: :request do
       post login_path, params: { session: { email: user.email, password: user.password } }
       delete logout_path
     end
+
     it { expect(response).to redirect_to(root_url) }
     it { expect(session[:user_id]).to be_nil }
   end
@@ -92,6 +98,7 @@ describe 'Sessions', type: :request do
         post login_path, params: { session: { email: user.email, password: user.password } }
         get edit_user_path(user)
       end
+
       it { expect(response).to render_template 'edit' }
     end
 
@@ -99,6 +106,7 @@ describe 'Sessions', type: :request do
       before do
         get edit_user_path(user)
       end
+
       it { expect(response).to redirect_to login_path }
     end
 
@@ -108,6 +116,7 @@ describe 'Sessions', type: :request do
         post login_path, params: { session: { email: user.email, password: user.password } }
         get edit_user_path(other_user)
       end
+
       it { expect(response).to redirect_to root_path }
     end
 
@@ -116,6 +125,7 @@ describe 'Sessions', type: :request do
         get edit_user_path(user)
         post login_path, params: { session: { email: user.email, password: user.password } }
       end
+
       it { expect(response).to redirect_to edit_user_path(user) }
     end
   end
